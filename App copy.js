@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, ScrollView, TouchableOpacity, Alert, StyleSheet, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
+import { View, TextInput, Button, Text, ScrollView, TouchableOpacity, Alert, StyleSheet, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
 import * as Speech from 'expo-speech';
-import { MaterialIcons } from '@expo/vector-icons';
 
 export default function App() {
   const [questions, setQuestions] = useState([]);
@@ -102,7 +101,7 @@ export default function App() {
             onPress={editIndex ? updateQuestion : addQuestions}
             style={styles.addButton}
           >
-            <MaterialIcons name="send" size={24} color="white" />
+            <Text style={styles.addButtonText}>{editIndex ? "Update" : "Add"}</Text>
           </TouchableOpacity>
         </View>
 
@@ -118,11 +117,11 @@ export default function App() {
           </View>
 
           <TouchableOpacity
-            onPress={isRunning ? () => setIsRunning(false) : startReading}
+            onPress={startReading}
             style={[styles.startButton, isRunning && { backgroundColor: '#ddd' }]}
             disabled={isRunning || questions.length === 0}
           >
-            <MaterialIcons name={isRunning ? "stop" : "play-arrow"} size={24} color="white" />
+            <Text style={styles.startButtonText}>Start Reading</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -158,7 +157,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     marginTop: 10,
-    padding: 10,
   },
   scrollContent: {
     paddingBottom: 150,
@@ -198,17 +196,19 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderColor: '#ddd',
-    borderRadius: 10,
+    borderRadius: 20,
     paddingHorizontal: 15,
     marginRight: 10,
   },
   addButton: {
     backgroundColor: 'purple',
-    borderRadius: 10,
-    paddingVertical: 7,
+    borderRadius: 20,
+    paddingVertical: 10,
     paddingHorizontal: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  addButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
   optionsRow: {
     flexDirection: 'row',
@@ -240,10 +240,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     backgroundColor: 'green',
     borderRadius: 20,
-    paddingVertical: 7,
+    paddingVertical: 10,
     paddingHorizontal: 15,
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  startButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
   clearButton: {
     marginLeft: 10,
@@ -252,7 +255,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   clearButtonText: {
     color: 'white',
