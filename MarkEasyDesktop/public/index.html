@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarkEasy</title>
+</head>
+
+<body>
+    <h1>MarkEasy App</h1>
+    <div>
+        <label for="questions">Enter Questions and Answers (e.g., "1. A, 2. B"):</label>
+        <input type="text" id="questions" placeholder="e.g., 1. A, 2. B" />
+    </div>
+    <div>
+        <label for="repetitions">Number of Repetitions:</label>
+        <input type="number" id="repetitions" value="1" min="1" />
+    </div>
+    <button onclick="startMarking()">Start</button>
+    <script src="renderer.js"></script>
+
+</body>
+
+</html>
